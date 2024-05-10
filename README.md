@@ -28,15 +28,55 @@ From the above characteristic table, we can directly write the next state equati
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Define Module: Define a Verilog module for the T flip-flop with inputs (T, CLK) and outputs (Q, Q_bar).
+
+2.Declare Inputs and Outputs: Declare input and output ports for the module.
+
+3.Implement Flip-Flop Logic: Write Verilog code to implement the T flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
+
+4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the T flip-flop under different input conditions.
+
+5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (T, CLK) to cover all possible input states.
+
+6.Verify Output Behavior: Verify that the output behavior of the T flip-flop matches the expected behavior defined by its functional table.
+
+7.Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by:Santha ramanath M
 
+RegisterNumber:212223220097
+*/
+```
+module TFLIPFLOPPOSEDGE( input clk, rst_n, input t,
+output reg q,
+output q_bar
+);
+always@(posedge clk) 
+begin 
+if(!rst_n)
+q<=0;
+else
+if(t)
+q<=~q;
+else
+q<=q;
+end
+assign q_bar = ~q;
+endmodule
+
+```
 **RTL LOGIC FOR FLIPFLOPS**
+
+![328232012-4a905465-aa65-41a7-828d-54e4f3e83f25](https://github.com/Santharamanath/T-FLIPFLOP-POSEDGE/assets/149035289/a9f794c6-fc27-445c-918f-636d0c45d3ce)
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+![328232054-1e2a7f8c-b4d4-4232-93b5-c14b870386cb](https://github.com/Santharamanath/T-FLIPFLOP-POSEDGE/assets/149035289/1ce177e7-c1f6-48aa-bfb8-98a989499ec1)
+
+
 **RESULTS**
+
+Hence,T flipflop using verilog and validating their functionality using their functional tables is implemented.
